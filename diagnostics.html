@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Диагностическая сессия — Ангелина Вивчаренко</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+
+    /* ─── Reset ────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Variables ─────────────────────────────── */
+    :root {
+      --bg:        #FAFAF8;
+      --text:      #1C1C1A;
+      --gold:      #B89A6A;
+      --gold-pale: #EDE3CF;
+      --warm:      #F2EDE5;
+      --divider:   #E2DDD5;
+      --muted:     #5C5C5A;
+      --serif:     'Cormorant Garant', Georgia, serif;
+      --sans:      'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Navigation ──────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 64px;
+      background: rgba(250,250,248,0.96);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .monogram {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant SC', serif;
+      font-size: 13px;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .nav-logo-name {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+    .nav-links {
+      display: flex;
+      gap: 44px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* ─── Shared ──────────────────────────────────── */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
+    .wrap-narrow { max-width: 800px; margin: 0 auto; padding: 0 64px; }
+
+    .eyebrow {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(30px, 3.5vw, 48px);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+    h2 em { font-style: italic; font-weight: 300; }
+
+    .prose p {
+      font-size: 15.5px;
+      line-height: 1.95;
+      color: var(--muted);
+      max-width: 100%;
+    }
+    .prose p + p { margin-top: 20px; }
+
+    .rule {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      margin: 36px 0;
+    }
+
+    /* ─── Buttons ─────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 36px;
+      border: 1px solid;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+    .btn-dark { color: var(--text); border-color: var(--text); }
+    .btn-dark:hover { background: var(--text); color: var(--bg); }
+    .btn-gold { color: var(--gold); border-color: var(--gold); }
+    .btn-gold:hover { background: var(--gold); color: var(--bg); }
+
+    /* ─── Page Hero ───────────────────────────────── */
+    .page-hero {
+      margin-top: 73px;
+      padding: 100px 0 96px;
+      background: var(--text);
+    }
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: end;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 300;
+      font-size: clamp(32px, 4vw, 56px);
+      line-height: 1.15;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      color: #FAFAF8;
+    }
+    .page-hero h1 em { font-style: normal; font-weight: 300; color: var(--gold); }
+    .page-hero .eyebrow { color: var(--gold); }
+    .page-hero-sub {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.5);
+      margin-bottom: 40px;
+      display: block;
+    }
+    .page-hero-right p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: rgba(250,250,248,0.68);
+      margin-bottom: 40px;
+    }
+
+    /* ─── Для кого ────────────────────────────────── */
+    .for-whom {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+    .for-whom-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .scenarios {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--divider);
+    }
+    .scenario {
+      background: var(--bg);
+      padding: 36px 36px 40px;
+    }
+    .scenario-num {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 300;
+      color: rgba(0,0,0,0.1);
+      display: block;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .scenario p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    /* ─── Как работаем ────────────────────────────── */
+    .how {
+      padding: 96px 0;
+      background: var(--warm);
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ─── Карта ───────────────────────────────────── */
+    .map-section {
+      padding: 96px 0;
+      border-top: 1px solid var(--divider);
+    }
+    .map-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+      margin-bottom: 72px;
+    }
+    .map-intro p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+    .map-parts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--divider);
+    }
+    .map-part {
+      background: var(--bg);
+      padding: 44px 44px 52px;
+    }
+    .map-part-name {
+      font-family: 'Cormorant SC', serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .map-part p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+    .map-how-to {
+      margin-top: 2px;
+      background: var(--warm);
+      border-left: 3px solid var(--gold);
+      padding: 44px 48px;
+    }
+    .map-how-to .map-part-name { color: var(--text); }
+    .map-how-to p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    /* ─── Pullquote ───────────────────────────────── */
+    .pullquote {
+      padding: 96px 0;
+      background: var(--text);
+    }
+    .pullquote blockquote {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(22px, 2.8vw, 38px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.4;
+      color: #FAFAF8;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .pullquote blockquote em { color: var(--gold); }
+
+    /* ─── Формат ──────────────────────────────────── */
+    .format {
+      padding: 96px 0;
+      border-top: 1px solid var(--divider);
+    }
+    .format-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .format-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--divider);
+      margin-bottom: 44px;
+    }
+    .format-item {
+      background: var(--bg);
+      padding: 28px 32px;
+    }
+    .format-item-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .format-item p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ─── FAQ ─────────────────────────────────────── */
+    .faq {
+      padding: 96px 0;
+      background: var(--warm);
+      border-top: 1px solid var(--divider);
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faq-list { }
+    .faq-item {
+      border-bottom: 1px solid var(--divider);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--divider); }
+
+    .faq-item summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 0;
+      cursor: pointer;
+      list-style: none;
+      gap: 24px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-q {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      position: relative;
+    }
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--gold);
+      transition: transform 0.35s, opacity 0.35s;
+    }
+    .faq-icon::before { width: 100%; height: 1px; top: 50%; left: 0; transform: translateY(-50%); }
+    .faq-icon::after  { width: 1px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+
+    .faq-item[open] .faq-icon::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+
+    .faq-body {
+      padding-bottom: 32px;
+    }
+    .faq-item p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    /* ─── Final CTA ───────────────────────────────── */
+    .final-cta {
+      padding: 120px 0;
+      text-align: center;
+      border-top: 1px solid var(--divider);
+    }
+    .final-cta h2 { margin-bottom: 16px; }
+    .final-cta p {
+      font-size: 15.5px;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+
+    /* ─── Footer ──────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 40px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-name { font-family: var(--serif); font-size: 13px; letter-spacing: 0.1em; }
+    footer span { font-size: 11px; color: #9A9A98; }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="monogram">А·В</div>
+      <span class="nav-logo-name">Ангелина Вивчаренко</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">Обо мне</a></li>
+      <li><a href="diagnostics.html" class="active">Диагностика</a></li>
+      <li><a href="program.html">Программа</a></li>
+      <li><a href="learn.html">Обучение</a></li>
+      <li><a href="blog.html">Блог</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="wrap">
+      <div class="page-hero-inner">
+        <div>
+          <span class="eyebrow">Стратегическая диагностическая сессия · 90 минут</span>
+          <h1>Внутренняя система:<br><em>Знакомство</em></h1>
+        </div>
+        <div class="page-hero-right">
+          <p>Приходите с расплывчатым ощущением «что-то не так». Уходите с инструкцией — как стать тем, кем всегда мечтал, и со стратегией жизни, в которой внешнее совпадает с внутренним.</p>
+          <a href="#" class="btn btn-gold">Познакомиться с собой</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ДЛЯ КОГО -->
+  <div class="for-whom">
+    <div class="wrap">
+      <div class="for-whom-grid">
+        <div>
+          <span class="eyebrow">Для кого</span>
+          <h2>Эта встреча<br>для вас, <em>если…</em></h2>
+        </div>
+        <div class="scenarios">
+          <div class="scenario">
+            <span class="scenario-num">01</span>
+            <p>Вы ходите по кругу. Меняются проекты, города, люди — но вы раз за разом оказываетесь в одной и той же точке. Выгорание, тупик, потеря смыслов. Снова.</p>
+          </div>
+          <div class="scenario">
+            <span class="scenario-num">02</span>
+            <p>Вы всё понимаете про себя. Читали книги, ходили к психологам, делали марафоны. Прекрасно знаете свои паттерны. Но знание — не облегчение.</p>
+          </div>
+          <div class="scenario">
+            <span class="scenario-num">03</span>
+            <p>Внутри идёт спор. Одна часть хочет масштаба, другая умоляет всё бросить, третья боится ошибиться. И колоссальное количество энергии уходит на этот внутренний конфликт — не на жизнь.</p>
+          </div>
+          <div class="scenario">
+            <span class="scenario-num">04</span>
+            <p>Вы держитесь на силе воли. Заставляете себя через «надо». Стратегия которая раньше помогала — теперь истощает.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- КАК МЫ РАБОТАЕМ -->
+  <div class="how">
+    <div class="wrap">
+      <div class="how-grid">
+        <div>
+          <span class="eyebrow">Подход</span>
+          <h2>Как мы<br><em>работаем</em></h2>
+        </div>
+        <div class="prose">
+          <p>Я работаю в феноменологическом подходе: замечаю то, что происходит между нами прямо сейчас. Как вы говорите, где останавливаетесь, что обходите стороной, где вдруг появляется напряжение или облегчение. Ваша система всё время что-то показывает — моя задача это увидеть и назвать.</p>
+          <p>В основе — IFS, метод работы с внутренними частями личности, и нейробиология. Это позволяет увидеть не только что происходит, но и почему именно так. Какая часть сейчас управляет, из какого опыта она это делает и чего на самом деле хочет.</p>
+          <p>Живой контакт с тем что есть — здесь и сейчас. Это и есть наш главный инструмент.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- КАРТА -->
+  <div class="map-section">
+    <div class="wrap">
+      <div class="map-intro">
+        <div>
+          <span class="eyebrow">Результат сессии</span>
+          <h2>Ваша Карта<br>внутренней<br><em>системы</em></h2>
+        </div>
+        <div>
+          <p>После сессии я составляю персональный документ — структурированный анализ вашей внутренней системы с треком работы на три месяца.</p>
+          <p>Карта включает четыре раздела.</p>
+        </div>
+      </div>
+      <div class="map-parts">
+        <div class="map-part">
+          <div class="map-part-name">Части и их роли</div>
+          <p>Описание частей которые были активны на сессии и в ситуациях которые вы разбирали. Их функции, защитные намерения и поведенческие стратегии — те самые автоматические программы которые когда-то помогали системе справляться, но сегодня создают внутренний раскол и мешают действовать из спокойного устойчивого центра.</p>
+        </div>
+        <div class="map-part">
+          <div class="map-part-name">Активные триггеры</div>
+          <p>Карта обстоятельств и ситуаций которые запускают ваши негативные циклы. Конкретные точки активации частей — с пониманием какое значение система присваивает этим обстоятельствам и какую эмоцию это вызывает.</p>
+        </div>
+        <div class="map-part">
+          <div class="map-part-name">Негативные циклы</div>
+          <p>Полная поведенческая цепочка — обстоятельство, значение, эмоция, реакция — с описанием ведущих защитных стратегий которые замыкают повторяющийся сценарий. Ясное понимание цикла — это первый шаг к выходу из автоматического реагирования.</p>
+        </div>
+        <div class="map-part">
+          <div class="map-part-name">Трек на 3 месяца</div>
+          <p>Персональный вектор работы — последовательное наращивание навыков эмоциональной регуляции, переработки устаревших убеждений и новых способов взаимодействия с частями системы. Каждый этап строится на предыдущем и ведёт к устойчивой интеграции изменений на поведенческом, эмоциональном и телесном уровне.</p>
+        </div>
+      </div>
+      <div class="map-how-to">
+        <div class="map-part-name">Как пользоваться Картой</div>
+        <p>Карта — это живой инструмент, а не документ для однократного прочтения. Возвращайтесь к ней в моменты когда что-то пошло не так — когда накрыло, когда снова запустился знакомый цикл, когда непонятно почему вы отреагировали именно так. Карта даёт ответ быстрее чем вы успеете себя осудить. Со временем вы начнёте замечать свои триггеры и части в реальном времени — и именно тогда появляется настоящий выбор реакции.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULLQUOTE -->
+  <div class="pullquote">
+    <div class="wrap-narrow">
+      <blockquote>Приходите такими <em>какие вы есть.</em><br>Ваша система сама покажет то, что требует внимания.</blockquote>
+    </div>
+  </div>
+
+  <!-- ФОРМАТ -->
+  <div class="format">
+    <div class="wrap">
+      <div class="format-grid">
+        <div>
+          <span class="eyebrow">Формат</span>
+          <h2>Как это<br><em>устроено</em></h2>
+        </div>
+        <div>
+          <div class="format-details">
+            <div class="format-item">
+              <span class="format-item-label">Формат</span>
+              <p>Онлайн с включённой камерой — там где вам комфортно говорить открыто и вас никто не отвлекает</p>
+            </div>
+            <div class="format-item">
+              <span class="format-item-label">Длительность</span>
+              <p>90 минут — достаточно чтобы глубоко исследовать систему и наметить вектор работы</p>
+            </div>
+            <div class="format-item">
+              <span class="format-item-label">Конфиденциальность</span>
+              <p>Всё что происходит на сессии остаётся строго между нами — это основа нашей работы</p>
+            </div>
+            <div class="format-item">
+              <span class="format-item-label">Результат</span>
+              <p>Карта внутренней системы + трек на 3 месяца — персональный документ после сессии</p>
+            </div>
+          </div>
+          <a href="#" class="btn btn-gold">Познакомиться с собой</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <div class="wrap">
+      <div class="faq-grid">
+        <div>
+          <span class="eyebrow">Вопросы</span>
+          <h2>Частые<br><em>вопросы</em></h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">Нужно ли как-то готовиться к сессии?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <div class="faq-body">
+              <p>Никакой подготовки не нужно. Мы работаем с тем что актуально прямо сейчас — здесь и сейчас. Ваша система сама покажет то что требует внимания в данный момент. Приходите такими какие вы есть.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">А вдруг мы найдём что-то с чем я не смогу справиться?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <div class="faq-body">
+              <p>Внутренняя система устроена очень мудро — она никогда не покажет то к чему вы сейчас не готовы. Глубина процесса всегда соответствует вашему ритму и ресурсу. Мы не взламываем защиты и не форсируем процесс. Мы движемся с уважением к вашей системе — туда куда она готова идти.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">Решит ли эта сессия мою проблему полностью?</span>
+              <span class="faq-icon"></span>
+            </summary>
+            <div class="faq-body">
+              <p>90 минут достаточно чтобы остановить внутренний конфликт, получить ясность и почувствовать реальное облегчение. Глубокая перестройка поведенческих паттернов и интеграция новых стратегий — это процесс который разворачивается во времени. На сессии мы создаём Карту и трек. Идти ли дальше по этому маршруту в длительной работе — вы решите сами из состояния внутренней тишины, а не из тревоги.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ФИНАЛЬНЫЙ CTA -->
+  <div class="final-cta">
+    <div class="wrap">
+      <h2>Готовы познакомиться<br>с собой <em>настоящим?</em></h2>
+      <a href="#" class="btn btn-gold">Познакомиться с собой</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Ангелина Вивчаренко</span>
+    <span>© 2025 · Все права защищены</span>
+  </footer>
+
+</body>
+</html>

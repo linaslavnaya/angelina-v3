@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обо мне — Ангелина Вивчаренко</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+
+    /* ─── Reset ────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Variables ─────────────────────────────── */
+    :root {
+      --bg:        #FAFAF8;
+      --text:      #1C1C1A;
+      --gold:      #B89A6A;
+      --gold-pale: #EDE3CF;
+      --warm:      #F2EDE5;
+      --divider:   #E2DDD5;
+      --muted:     #5C5C5A;
+      --serif:     'Cormorant Garant', Georgia, serif;
+      --sans:      'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Navigation ──────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 64px;
+      background: rgba(250,250,248,0.96);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .monogram {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant SC', serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .nav-logo-name {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+    .nav-links {
+      display: flex;
+      gap: 44px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* ─── Shared ──────────────────────────────────── */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+    .wrap-narrow {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+    .eyebrow {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(30px, 3.5vw, 48px);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    h2 em { font-style: italic; font-weight: 300; }
+
+    .prose p {
+      font-size: 15.5px;
+      line-height: 1.95;
+      color: var(--muted);
+      max-width: 100%;
+    }
+    .prose p + p { margin-top: 20px; }
+
+    .rule {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      margin: 36px 0;
+    }
+
+    /* ─── Page Hero ───────────────────────────────── */
+    .page-hero {
+      margin-top: 73px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+    .page-hero-photo {
+      background-color: #C8C0B4;
+      background-image: url('photos/02.png');
+      background-size: cover;
+      background-position: center top;
+    }
+    .page-hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 80px 80px 80px 80px;
+      background: var(--warm);
+    }
+    .page-hero-text .page-title {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 300;
+      font-size: clamp(13px, 1.2vw, 16px);
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 24px;
+    }
+    .page-hero-text h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+    .page-hero-text h1 em { font-style: italic; }
+    .page-hero-text p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    /* ─── Chapter blocks ──────────────────────────── */
+    .chapter {
+      padding: 96px 0;
+      border-top: 1px solid var(--divider);
+    }
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .chapter-label h3 {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 300;
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      color: var(--text);
+    }
+    .chapter-label h3 em { font-style: normal; font-weight: 300; }
+
+    /* ─── Pull quote ──────────────────────────────── */
+    .pullquote {
+      background: var(--text);
+      padding: 96px 0;
+    }
+    .pullquote blockquote {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(22px, 2.8vw, 38px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.4;
+      color: #FAFAF8;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .pullquote blockquote em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ─── Photo break ─────────────────────────────── */
+    .photo-break {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+    .photo-break-img {
+      background-color: #C8C0B4;
+      background-image: url('photos/04.png');
+      background-size: cover;
+      background-position: center top;
+    }
+    .photo-break-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+      background: var(--warm);
+    }
+    .photo-break-text p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+    .photo-break-text p + p { margin-top: 20px; }
+
+    /* ─── Credentials ─────────────────────────────── */
+    .credentials {
+      padding: 96px 0;
+      border-top: 1px solid var(--divider);
+    }
+    .cred-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      background: var(--divider);
+      margin-bottom: 48px;
+    }
+    .stat {
+      background: var(--bg);
+      padding: 28px 24px;
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 38px;
+      font-weight: 300;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cred-list {
+      list-style: none;
+    }
+    .cred-list li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+    }
+    .cred-list li::before {
+      content: '—';
+      color: var(--gold);
+      flex-shrink: 0;
+      font-family: var(--serif);
+    }
+
+    /* ─── Diplomas ────────────────────────────────── */
+    .diplomas {
+      padding: 80px 0;
+      border-top: 1px solid var(--divider);
+      background: var(--warm);
+    }
+    .diplomas-placeholder {
+      height: 200px;
+      border: 1px dashed var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .diplomas-placeholder span {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--divider);
+    }
+
+    /* ─── Final CTA ───────────────────────────────── */
+    .final-cta {
+      padding: 120px 0;
+      text-align: center;
+      border-top: 1px solid var(--divider);
+    }
+    .cta-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    /* ─── Buttons ─────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 34px;
+      border: 1px solid;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+    .btn-dark { color: var(--text); border-color: var(--text); }
+    .btn-dark:hover { background: var(--text); color: var(--bg); }
+    .btn-gold { color: var(--gold); border-color: var(--gold); }
+    .btn-gold:hover { background: var(--gold); color: var(--bg); }
+
+    /* ─── Footer ──────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 40px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+    }
+    footer span { font-size: 11px; color: #9A9A98; }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="monogram">А·В</div>
+      <span class="nav-logo-name">Ангелина Вивчаренко</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">Обо мне</a></li>
+      <li><a href="diagnostics.html">Диагностика</a></li>
+      <li><a href="program.html">Программа</a></li>
+      <li><a href="learn.html">Обучение</a></li>
+      <li><a href="blog.html">Блог</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-photo"></div>
+    <div class="page-hero-text">
+      <span class="page-title">Обо мне</span>
+      <h1>Меня зовут Ангелина.<br>Я терапевт, психолог,<br><em>коуч и фасилитатор.</em></h1>
+      <p>Живу шумно и полно. Работаю глубоко и честно.</p>
+    </div>
+  </div>
+
+  <!-- БЛОК 1 — ПОВОРОТНЫЙ МОМЕНТ -->
+  <div class="chapter">
+    <div class="wrap">
+      <div class="chapter-grid">
+        <div class="chapter-label">
+          <span class="eyebrow">С чего началось</span>
+          <h3>Поворотный<br><em>момент</em></h3>
+        </div>
+        <div class="prose">
+          <p>Мне было 15, когда я приняла первое по-настоящему взрослое решение в своей жизни.</p>
+          <p>Родители уезжали в другую страну. Мой аттестат уже был привязан лентой апостиля, мне нужно было только собрать вещи и сказать «прощай, старая жизнь». Но что-то внутри сказало — нет. Чётко и без объяснений. Я рассказала о решении родителям и осталась. И ни разу за всю жизнь не пожалела об этом.</p>
+          <p>Это был первый раз, когда я услышала свой голос в полную силу. Первый раз, когда я выбрала себя — не вопреки чему-то, а просто потому что знала: если уеду, предам что-то важное внутри. Тогда я ещё не знала что это называется Self. Но именно тогда я впервые почувствовала, что значит слышать свой настоящий голос.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- БЛОК 2 — КАК ПСИХОЛОГИЯ ПРИШЛА В МЕНЯ -->
+  <div class="chapter">
+    <div class="wrap">
+      <div class="chapter-grid">
+        <div class="chapter-label">
+          <span class="eyebrow">Путь</span>
+          <h3>Как психология<br><em>пришла в меня</em></h3>
+        </div>
+        <div class="prose">
+          <p>Не я пришла в психологию — она пришла в меня. Или, вернее сказать, она всегда была внутри. Через людей, через учителей и наставников, мой зов обретал внешнее подтверждение, что мне нужно идти туда, где есть «я и другие и то, что между нами».</p>
+          <p>Театр и сцена показали мне, что можно быть любым, что быть смешным — не страшно. Мой преподаватель по сценическому мастерству научил меня быть разной, жить роль на сцене и наслаждаться игрой.</p>
+          <p>Мой муж принес в мою жизнь свою мудрость и книги: Вадим Зеланд, Карлос Кастанеда — и мы с ним впервые научились говорить через внутренний центр и понимать, как устроен человек изнутри. Мы до сих пор так разговариваем и учим этому своих детей.</p>
+          <p>Я преподавала взрослым новый язык, и это всегда было нелегко, ведь новое не встраивается молниеносно, а мне всегда хотелось понять — как меняться быстро и устойчиво. Не через силу воли и самодисциплину, а через понимание собственной архитектуры, своих внутренних механизмов. Так я пришла к метакогнитивному программированию — и встроила в жизнь то, что раньше казалось недостижимым: навык эмоциональной регуляции, умение замечать искажения мышления и перестраивать их, способность выходить из автоматических реакций осознанно.</p>
+          <p>Детские истерики регулярно проверяют, насколько хорошо я усвоила эти навыки. Замужество и материнство открыли и развили во мне новые грани, роли, новые выборы и возможность наблюдать себя и улучшать каждый день.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULLQUOTE 1 -->
+  <div class="pullquote">
+    <div class="wrap-narrow">
+      <blockquote>Не я пришла в психологию —<br><em>она пришла в меня.</em></blockquote>
+    </div>
+  </div>
+
+  <!-- БЛОК 3 — КПТ -->
+  <div class="chapter">
+    <div class="wrap">
+      <div class="chapter-grid">
+        <div class="chapter-label">
+          <span class="eyebrow">Образование</span>
+          <h3>Магистратура.<br>КПТ.<br><em>Схема-терапия.</em></h3>
+        </div>
+        <div class="prose">
+          <p>Я пошла в магистратуру по когнитивно-поведенческой терапии, чтобы получить научную основу под то, что уже чувствовала интуитивно. КПТ дала мне язык для работы с мышлением: как распознавать поведенческие цепочки, как работать с убеждениями которые управляют жизнью человека, как помочь выйти из ловушек которые мозг расставляет сам себе.</p>
+          <p>Потом пришла схема-терапия — и открыла новый уровень работы с ранними паттернами, с копинг-стратегиями, с теми частями личности которые сформировались чтобы выжить, и продолжают управлять жизнью взрослого человека, не зная что опасность давно прошла.</p>
+          <p>Мой жгучий интерес к паттернам в поведении человека нашёл здесь идеальную почву.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- БЛОК 4 — ИНСТИТУТ ПАР -->
+  <div class="chapter">
+    <div class="wrap">
+      <div class="chapter-grid">
+        <div class="chapter-label">
+          <span class="eyebrow">Калифорния</span>
+          <h3>Институт пар.<br><em>Эллин Бейдер.</em></h3>
+        </div>
+        <div class="prose">
+          <p>Отдельная глава моей профессиональной жизни — обучение в Couples Institute у Эллин Бейдер и Питера Пирсона. Здесь я училась работать с самым сложным — с пространством между двумя людьми. С тем, как два человека со своими внутренними системами создают третью систему, которая называется отношения. Как они застревают в слиянии или дистанции, как возвращают контакт, как строят близость которая не поглощает.</p>
+          <p>Это обучение изменило не только мою практику, но и мой собственный брак. Пятнадцать лет с мужем-скорпионом — это ежедневная живая работа над собой.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- БЛОК 5 — MBA -->
+  <div class="chapter">
+    <div class="wrap">
+      <div class="chapter-grid">
+        <div class="chapter-label">
+          <span class="eyebrow">Стратегия</span>
+          <h3>MBA.<br><em>Новый уровень<br>взгляда на человека.</em></h3>
+        </div>
+        <div class="prose">
+          <p>После MBA Executive я начала по-другому смотреть на работу с человеком. Появился язык стратегии и системного мышления — умение видеть не только то, что происходит сейчас, но и то, куда это ведёт. Менторинг, диагностика, построение индивидуального трека развития — всё это стало частью моего подхода.</p>
+          <p>Я поняла: психология без стратегии — это работа с симптомами. Стратегия без психологии — это планы которые не выполняются. MBA дало мне язык для обоих — и умение видеть человека целиком: где он сейчас, куда идёт и что именно мешает двигаться.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO BREAK + IFS -->
+  <div class="photo-break">
+    <div class="photo-break-img"></div>
+    <div class="photo-break-text">
+      <span class="eyebrow">Главное открытие</span>
+      <h2 style="margin-bottom: 28px;">IFS. Самый честный<br><em>разговор с собой.</em></h2>
+      <p>И наконец — IFS. Internal Family Systems. Терапия внутренних систем.</p>
+      <p>Это стало настоящим сокровищем, которое стоило поискать. Как только я прикоснулась к работе с частями, меня тут же окутало стойкое ощущение, что «я дома».</p>
+      <p>Во время обучения, будучи клиентом, я однажды вспомнила, как это чувствовалось тогда, в детстве, когда я смотрела в окно вдаль и думала о том, что может происходить там, за горизонтом. Я помню запах тёплого летнего воздуха, самые первые обои на стенах — нежные розово-белые цветы на молочном, бабушкина любимая кассета с записью песен, которые она пела с сёстрами — и ощущение, что впереди вся жизнь, интересная и воодушевляющая.</p>
+      <p>Работа с внутренней системой — это принципиально другой взгляд на человека перед тобой. Зная кто живёт внутри, кто заботится, защищает, уходит или негодует, кого прячут и скрывают, кто остался навсегда маленьким и беззащитным, но до сих пор ждёт помощи — зная всё это, открывается вся полнота человеческого опыта, глубина и настоящесть.</p>
+      <p>IFS изменила мою практику полностью. И изменила меня.</p>
+    </div>
+  </div>
+
+  <!-- БЛОК 7 — ГРУППЫ -->
+  <div class="chapter">
+    <div class="wrap">
+      <div class="chapter-grid">
+        <div class="chapter-label">
+          <span class="eyebrow">Фасилитация</span>
+          <h3>Группы.<br>Голос.<br><em>Фасилитация.</em></h3>
+        </div>
+        <div class="prose">
+          <p>Ещё один поворотный момент случился на тренинге для тренеров.</p>
+          <p>Я поняла силу голоса — как он может удерживать пространство, задавать ритм, управлять динамикой группы. Это было что-то новое — одновременное взаимодействие нескольких внутренних систем, которые обогащают друг друга.</p>
+          <p>Я начала вести группы в образовательных проектах и почувствовала: изменения в группе происходят в разы быстрее, чем когда человек идёт по пути один. Что-то в поддерживающем пространстве других людей запускает то, что в одиночестве остаётся закрытым.</p>
+          <p>Фасилитация открыла во мне способность удерживать поле, расширила эмоциональную ёмкость и умение держать фокус на нескольких параллельных процессах одновременно. Особая красота раскрывалась в моменты, когда участники начинали говорить из уязвимости — и исцелять части застрявшие в прошлых историях.</p>
+          <p>Терапевтические группы — это особый вид моей деятельности. Здесь моё внутреннее растёт и расширяется вместе с внешним.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- БЛОК 8 — КТО Я -->
+  <div class="chapter">
+    <div class="wrap">
+      <div class="chapter-grid">
+        <div class="chapter-label">
+          <span class="eyebrow">Сейчас</span>
+          <h3>Кто я<br><em>в этой работе</em></h3>
+        </div>
+        <div class="prose">
+          <p>Что я знаю сейчас? Я знаю, как быть себе самым лучшим другом. Звучит просто, но на самом деле это самая сложная и самая важная работа которую я сделала в жизни.</p>
+          <p>Самое сложное в моём деле — сталкиваться со своей беспомощностью. Там, где я бессильна что-либо поменять: в потерях, в горе, в том что уже случилось и не изменится. Я долго хотела помочь, исправить, найти правильные слова — а потом поняла самое главное. В таких моментах не нужны слова. Нужна я и моё присутствие. Моё пространство должно быть настолько большим, чтобы человек мог разместить свою боль и не бояться, что она всё разрушит.</p>
+          <p>Я хочу быть океаном для другого и вмещать всё что он принесёт. И я продолжаю расширяться.</p>
+          <p>Я знаю что я — проводник. Нет ничего нового что я могла бы сказать другому человеку — и одновременно есть так много, что человек мог бы сказать себе в моём присутствии. В этом и есть настоящая красота терапии.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULLQUOTE 2 -->
+  <div class="pullquote">
+    <div class="wrap-narrow">
+      <blockquote>Я — проводник. Нет ничего нового что я могла бы сказать другому. И одновременно — есть так много, что человек мог бы сказать <em>себе</em> в моём присутствии.</blockquote>
+    </div>
+  </div>
+
+  <!-- CREDENTIALS -->
+  <div class="credentials">
+    <div class="wrap">
+      <span class="eyebrow">Опыт в цифрах</span>
+      <div class="stats-row" style="margin-bottom: 80px;">
+        <div class="stat">
+          <span class="stat-num">1700+</span>
+          <span class="stat-label">сессий</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">300+</span>
+          <span class="stat-label">часов супервизии</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">400+</span>
+          <span class="stat-label">часов фасилитации</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">15</span>
+          <span class="stat-label">лет преподавания</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">15</span>
+          <span class="stat-label">лет публичных выступлений</span>
+        </div>
+      </div>
+
+      <div class="cred-grid">
+        <div>
+          <span class="eyebrow">Образование и сертификации</span>
+        </div>
+        <ul class="cred-list">
+          <li>MBA Executive (coaching, diagnostics, mentoring)</li>
+          <li>Магистр психологии, КПТ-терапевт — Московский Институт Психоанализа</li>
+          <li>IFS-терапевт</li>
+          <li>Сертифицированный метакогнитивный коуч — Канада</li>
+          <li>Семейный терапевт — Couples Institute, США</li>
+          <li>Коуч ICTA, супервизор, ментор, диагност</li>
+          <li>Тренер программ по голосу, речи и публичным выступлениям</li>
+          <li>Семейный психолог</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ДИПЛОМЫ -->
+  <div class="diplomas">
+    <div class="wrap">
+      <span class="eyebrow">Документы</span>
+      <div class="diplomas-placeholder">
+        <span>Фотографии сертификатов и дипломов</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="final-cta">
+    <div class="wrap">
+      <span class="eyebrow">Начать</span>
+      <h2>У каждого Героя свой <em>Путь</em></h2>
+      <div class="cta-btns">
+        <a href="learn.html" class="btn btn-dark">Начать самостоятельно</a>
+        <a href="diagnostics.html" class="btn btn-gold">Начать вместе</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Ангелина Вивчаренко</span>
+    <span>© 2025 · Все права защищены</span>
+  </footer>
+
+</body>
+</html>

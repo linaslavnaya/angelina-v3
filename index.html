@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ангелина Вивчаренко</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+
+    /* ─── Reset ────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Variables ─────────────────────────────── */
+    :root {
+      --bg:        #FAFAF8;
+      --text:      #1C1C1A;
+      --gold:      #B89A6A;
+      --gold-pale: #EDE3CF;
+      --warm:      #F2EDE5;
+      --divider:   #E2DDD5;
+      --muted:     #5C5C5A;
+      --serif:     'Cormorant Garant', Georgia, serif;
+      --bodoni:    'Bodoni Moda', Georgia, serif;
+      --sans:      'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Navigation ──────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 64px;
+      transition: background 0.5s, padding 0.4s, border-color 0.5s;
+    }
+    nav.scrolled {
+      background: rgba(250,250,248,0.96);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(10px);
+      padding: 18px 64px;
+    }
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: opacity 0.3s;
+    }
+    .nav-logo:hover { opacity: 0.8; }
+    .monogram {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(250,250,248,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant SC', serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgba(250,250,248,0.9);
+      transition: border-color 0.5s, color 0.5s;
+      flex-shrink: 0;
+    }
+    nav.scrolled .monogram {
+      border-color: var(--divider);
+      color: var(--text);
+    }
+    .nav-logo-name {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: rgba(250,250,248,0.9);
+      transition: color 0.5s;
+    }
+    nav.scrolled .nav-logo-name { color: var(--text); }
+    .nav-links {
+      display: flex;
+      gap: 44px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.72);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav.scrolled .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: #fff; }
+    nav.scrolled .nav-links a:hover { color: var(--text); }
+
+    /* ─── Buttons ─────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 34px;
+      border: 1px solid;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+    .btn-ghost-light {
+      color: #FAFAF8;
+      border-color: rgba(255,255,255,0.5);
+    }
+    .btn-ghost-light:hover { background: #FAFAF8; color: var(--text); border-color: #FAFAF8; }
+    .btn-ghost-gold {
+      color: var(--gold-pale);
+      border-color: var(--gold);
+    }
+    .btn-ghost-gold:hover { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+    .btn-dark { color: var(--text); border-color: var(--text); }
+    .btn-dark:hover { background: var(--text); color: var(--bg); }
+    .btn-gold { color: var(--gold); border-color: var(--gold); }
+    .btn-gold:hover { background: var(--gold); color: var(--bg); }
+
+    .arrow-link {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: gap 0.3s, color 0.3s;
+    }
+    .arrow-link:hover { gap: 18px; color: #fff; }
+
+    /* ─── Shared ──────────────────────────────────── */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+    .eyebrow {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(32px, 3.8vw, 52px);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+    }
+    h2 em { font-style: italic; font-weight: 300; }
+
+    .body-text p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 620px;
+    }
+    .body-text p + p { margin-top: 18px; }
+
+    .rule {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      margin: 36px 0;
+    }
+
+    /* ─── HERO ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #C0B5A8;
+      background-image: url('photos/05.png');
+      background-size: cover;
+      background-position: center 15%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.25) 0%,
+        rgba(0,0,0,0.38) 50%,
+        rgba(0,0,0,0.55) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      text-align: right;
+      padding: 0 80px 0 50%;
+    }
+    .hero-name {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 300;
+      font-size: clamp(18px, 2vw, 26px);
+      letter-spacing: 0.22em;
+      color: rgba(250,250,248,0.95);
+      margin-bottom: 12px;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 40px;
+    }
+    .hero-phrase {
+      margin-bottom: 56px;
+    }
+    .hero-line1 {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(20px, 2vw, 28px);
+      line-height: 1.3;
+      color: rgba(250,250,248,0.92);
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+    }
+    .hero-line2 {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(22px, 2.2vw, 32px);
+      line-height: 1.3;
+      color: #FAFAF8;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    /* ─── КТО Я ───────────────────────────────────── */
+    .who {
+      padding: 120px 0;
+    }
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: center;
+    }
+    .who-photo {
+      aspect-ratio: 3/4;
+      background-color: #C8C0B4;
+      background-image: url('photos/01.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ─── ПОДХОД ──────────────────────────────────── */
+    .approach {
+      padding: 80px 0 120px;
+      border-top: 1px solid var(--divider);
+    }
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    /* ─── БОЛЬ ────────────────────────────────────── */
+    .pain {
+      background: var(--text);
+      padding: 120px 0;
+    }
+    .pain .eyebrow { color: var(--gold); }
+    .pain h2 { color: #FAFAF8; margin-bottom: 60px; }
+    .pain h2 em { color: var(--gold); }
+
+    .pain-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 80px;
+    }
+    .pain-body p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: rgba(250,250,248,0.68);
+      max-width: 100%;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .pain-body p:first-child,
+    .pain-body p:nth-child(2) { padding-top: 0; }
+    .pain-closing {
+      margin-top: 72px;
+      padding-top: 60px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    .pain-closing p {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.8vw, 34px);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(250,250,248,0.85);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ─── ПОЧЕМУ ТАК (IFS) ────────────────────────── */
+    .ifs {
+      padding: 120px 0;
+    }
+    .ifs-intro {
+      max-width: 700px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .ifs-intro h2 { margin-bottom: 24px; }
+    .ifs-intro p { margin: 0 auto; }
+    .ifs-narrative {
+      border-top: 1px solid var(--divider);
+      padding-top: 64px;
+    }
+    .ifs-narrative p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 100%;
+    }
+    .ifs-narrative p + p { margin-top: 20px; }
+
+    .roles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 72px;
+    }
+    .role {
+      padding: 40px 44px 48px;
+      border-top: 1px solid var(--divider);
+      border-right: 1px solid var(--divider);
+    }
+    .role:nth-child(2n) { border-right: none; }
+    .role-name {
+      font-family: 'Cormorant SC', serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+    .role p {
+      font-size: 14.5px;
+      color: var(--muted);
+      max-width: 100%;
+      line-height: 1.85;
+    }
+
+    .ifs-finale {
+      margin-top: 80px;
+      padding-top: 64px;
+      border-top: 1px solid var(--divider);
+    }
+    .ifs-finale p {
+      font-size: 15.5px;
+      color: var(--muted);
+      max-width: 100%;
+      line-height: 1.9;
+    }
+    .ifs-finale p + p { margin-top: 20px; }
+    .ifs-finale .triad {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .triad-item {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ─── ЧТО МЕНЯЕТСЯ ────────────────────────────── */
+    .result {
+      background: var(--warm);
+      padding: 120px 0;
+    }
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 96px;
+      align-items: start;
+    }
+    .result-paras p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 100%;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .result-paras p:first-child { padding-top: 0; border-top: 1px solid rgba(0,0,0,0.07); }
+    .result-finale {
+      margin-top: 24px;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    /* ─── ИСТОРИИ ─────────────────────────────────── */
+    .stories {
+      padding: 120px 0;
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--divider);
+      margin-top: 64px;
+    }
+    .story {
+      background: var(--bg);
+      padding: 48px 44px 56px;
+    }
+    .story-tag {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 24px;
+    }
+    .story-title {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.25;
+      margin-bottom: 28px;
+      color: var(--text);
+    }
+    .story-part {
+      margin-bottom: 20px;
+    }
+    .story-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .story p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 100%;
+    }
+
+    /* ─── ДОВЕРИЕ ─────────────────────────────────── */
+    .trust {
+      padding: 120px 0;
+      border-top: 1px solid var(--divider);
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 96px;
+      align-items: start;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--divider);
+      margin-top: 44px;
+    }
+    .stat {
+      background: var(--bg);
+      padding: 28px 24px;
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 38px;
+      font-weight: 300;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── ФИНАЛЬНЫЙ CTA ───────────────────────────── */
+    .final-cta {
+      padding: 120px 0;
+      text-align: center;
+      border-top: 1px solid var(--divider);
+    }
+    .final-cta h2 { margin-bottom: 20px; }
+    .cta-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    /* ─── Footer ──────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 40px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+    }
+    footer span { font-size: 11px; color: #9A9A98; }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="monogram">А·В</div>
+      <span class="nav-logo-name">Ангелина Вивчаренко</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">Обо мне</a></li>
+      <li><a href="diagnostics.html">Диагностика</a></li>
+      <li><a href="program.html">Программа</a></li>
+      <li><a href="learn.html">Обучение</a></li>
+      <li><a href="blog.html">Блог</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-name">Ангелина Вивчаренко</div>
+      <span class="hero-eyebrow">Терапевт · Психолог · Коуч</span>
+      <div class="hero-phrase">
+        <span class="hero-line1">Путь Героя начинается с раскола.</span>
+        <span class="hero-line2">Заканчивается — там, где ты<br>свой лучший друг.</span>
+      </div>
+      <div class="hero-actions">
+        <a href="learn.html" class="btn btn-ghost-light">Начать самостоятельно</a>
+        <a href="diagnostics.html" class="btn btn-ghost-gold">Начать вместе</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- КТО Я -->
+  <div class="who">
+    <div class="wrap">
+      <div class="who-grid">
+        <div class="who-photo"></div>
+        <div class="body-text">
+          <span class="eyebrow">Кто я</span>
+          <div class="rule"></div>
+          <p>Меня зовут Ангелина, я — терапевт, психолог и тренер по ассертивной коммуникации.</p>
+          <p>Я работаю с людьми, которые привыкли справляться. Которые знают как ставить цели, двигаться вперёд и не сдаваться. Но в какой-то момент кто-то внутри начинает тормозить, критиковать и увиливать — и перехватывать управление. И никакая следующая цель не помогает чувствовать себя лучше.</p>
+          <p>Я помогаю остановить внутренний раскол — между тем, кто вы есть и тем, кем вы хотите быть. Между тем, кто вы внутри — и тем, кто вы снаружи.</p>
+          <a href="about.html" class="btn btn-dark" style="margin-top: 44px;">Подробнее обо мне</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ПОДХОД -->
+  <div class="approach">
+    <div class="wrap">
+      <div class="approach-grid">
+        <div>
+          <span class="eyebrow">Подход</span>
+          <h2>Феноменология.<br>Нейробиология.<br><em>IFS.</em></h2>
+        </div>
+        <div class="body-text" style="padding-top: 8px;">
+          <p>Моя работа строится на принципах феноменологии, нейробиологии, психологии и терапии внутренних систем.</p>
+          <p>Основа — живое тёплое пространство без осуждения. Место для глубокого исследования того, что происходит здесь-и-сейчас, знакомства с частями вашей уникальной внутренней системы и интеграции новых открытий на всех уровнях — когнитивном, эмоциональном и телесном.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- БОЛЬ -->
+  <div class="pain">
+    <div class="wrap">
+      <span class="eyebrow">Узнаёте себя?</span>
+      <h2>Атлант <s style="opacity:0.35">расправил плечи</s> заработал<br><em>межпозвоночную грыжу.</em></h2>
+      <div class="pain-body">
+        <p>Я мечтал стать сильным, когда вырасту. Я вырос и стал сильным. А потом устал и не знаю, кем быть дальше.</p>
+        <p>Вы держите всё: бизнес, семью, команду, себя. Ваша система выстроена, всё под контролем. Но однажды вечером вы садитесь — и просто не можете встать. Терпение и труд всё перетёрли. Даже смыслы.</p>
+        <p>Возможно, вы давно хотите начать что-то новое — создать новый продукт, спеть авторскую песню или переехать туда, где пахнет соснами. Идея есть, деньги есть, и время найдётся. Но каждый раз что-то останавливает.</p>
+        <p>На работе держитесь, дома срываетесь. Или наоборот — дома улыбаетесь, а в переговорах говорите такое, что потом стыдно вспомнить. Как будто внутри живут разные люди — и вы не выбираете, кто выйдет следующим к микрофону.</p>
+        <p>Ваш когнитивный движок всегда на максимальных оборотах — сжигает топливо непрекращающихся руминаций на тему «236 вариантов ответить лучше, чем я это сделал на совещании в 2019-м». Город засыпает, просыпается ваша внутренняя мафия. Готовая всю ночь крутить задачи, чтобы утром быть уже в тревоге — и к вечеру плюхнуться на кровать с ощущением «я сделал всё и одновременно ничего».</p>
+        <p>Дома вы любящий партнёр. Или стараетесь. Но в какой-то момент близкий человек говорит: «ты здесь, но тебя нет». И вы понимаете — он прав. Вы давно не помните когда последний раз были просто собой рядом с ним.</p>
+      </div>
+      <div class="pain-closing">
+        <p>Кто этот человек в зеркале по утрам? Не друг, не враг — а так...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ПОЧЕМУ ТАК -->
+  <div class="ifs">
+    <div class="wrap">
+      <div class="ifs-intro">
+        <span class="eyebrow">Почему так</span>
+        <h2>Правильный вопрос —<br>не «кто я?».<br>А «кто <em>они</em>?»</h2>
+        <p>Эти личности, которые садятся за руль едва в движок залили масло с «эмоциональными присадками». Там целая команда.</p>
+      </div>
+
+      <div class="roles">
+        <div class="role">
+          <div class="role-name">Менеджеры</div>
+          <p>Работают без выходных. Они следят чтобы всё шло по плану, чтобы ум был занят, чтобы задачи выполнялись. Именно они заставляют вас в 2 ночи открыть ноутбук и «просто проверить одно письмо».</p>
+        </div>
+        <div class="role">
+          <div class="role-name">Пожарные</div>
+          <p>Их задача — потушить пожар любой ценой. Быстро. Они не думают о последствиях. Они просто стабилизируют систему — через что угодно. Через бокал вина, через четыре часа в телефоне, через работу до потери пульса, через скандал который потом непонятно откуда взялся.</p>
+        </div>
+        <div class="role" style="border-bottom: 1px solid var(--divider);">
+          <div class="role-name">Изгнанники</div>
+          <p>Но иногда что-то идёт не так. Откуда-то изнутри поднимается старая боль — та, которую давно решили не трогать. Менеджеры теряются и не знают что делать. Тех, кто хочет показаться на свет — мастерски тушат Пожарные. Изгнанники, несущие свою боль годами, так и остаются ждать своего часа, одинокие и непринятые.</p>
+        </div>
+        <div class="role" style="border-bottom: 1px solid var(--divider); border-right: none;">
+          <div class="role-name">Self</div>
+          <p><strong style="font-weight: 400;">Большое Я:</strong><br>спокойное, любящее, искренне вами интересующееся. Оно не борется с частями — оно знает каждую из них по имени. И когда оно появляется — Менеджеры могут наконец выдохнуть. Пожарные — получат перерыв на смене.</p>
+        </div>
+      </div>
+
+      <div class="ifs-finale">
+        <p>Ваша система делает всё что умеет, чтобы вы были в порядке. Вас надо сохранить для выживания вида, но не для процветания. Процветать систему не учили.</p>
+        <p>Чтобы процветать — нужен кто-то, кто вовремя заметит перегруз, утешит боль присутствием и сочувствием и вовремя снимет с плеч тяжёлый рюкзак.</p>
+        <p>А те, кто нёс боль годами — получают то, чего так долго ждали.</p>
+        <div class="triad">
+          <span class="triad-item">Внимание.</span>
+          <span class="triad-item">Сочувствие.</span>
+          <span class="triad-item">Принятие.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЧТО МЕНЯЕТСЯ -->
+  <div class="result">
+    <div class="wrap">
+      <div class="result-grid">
+        <div>
+          <span class="eyebrow">Что меняется</span>
+          <h2>Не всё сразу.<br>Но <em>заметно.</em></h2>
+          <div class="rule"></div>
+        </div>
+        <div>
+          <div class="result-paras">
+            <p>Сначала появляется тишина внутри. Не звенящая пустота которую невозможно заполнить — и не кошки на душе. Тишина нужна чтобы вы наконец услышали свой собственный отклик. Тот момент когда голоса перестают перекрикивать друг друга — и система работает слаженно.</p>
+            <p>Потом наступает ясность. Не «я знаю все ответы» — а «я знаю куда иду». Задачи перестают накапливаться в тревожный ком и просто делаются.</p>
+            <p>Отношения становятся другими. Спойлер: партнёр не изменился. Просто вы наконец почувствовали что значит быть рядом по-настоящему. Вы перестаёте говорить — и начинаете разговаривать. Слышать, слушать, понимать, уважать разность друг друга.</p>
+            <p>И появляется то чего так не хватало — энергия на новое и желание творить. Юное любопытство к жизни, которое куда-то исчезло в годы «надо успеть».</p>
+          </div>
+          <p class="result-finale">Вы перестаёте мешать себе жить.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA СЕРЕДИНА -->
+  <div style="padding: 80px 0; text-align: center; border-top: 1px solid var(--divider);">
+    <div class="wrap">
+      <div class="cta-btns">
+        <a href="learn.html" class="btn btn-dark">Начать самостоятельно</a>
+        <a href="diagnostics.html" class="btn btn-gold">Начать вместе</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ИСТОРИИ -->
+  <div class="stories">
+    <div class="wrap">
+      <span class="eyebrow">Истории клиентов</span>
+      <h2>То, что происходит<br>в <em>работе</em></h2>
+      <div class="stories-grid">
+
+        <div class="story">
+          <span class="story-tag">История 01</span>
+          <div class="story-title">«Я больше так не могу»</div>
+          <div class="story-part">
+            <span class="story-label">До</span>
+            <p>Она пришла с мигренями и не могла нормально спать. Работала от рассвета до заката, тащила всё сама, срывалась на близких и плакала: «я не могу так больше». Отношения не складывались, потому что не было сил поесть 3 раза — какие уж тут свидания.</p>
+          </div>
+          <div class="story-part">
+            <span class="story-label">После</span>
+            <p>Ушла с новым резюме, новой работой и новой зарплатой. Стала спать, и даже нормально питаться. Появились отношения — самые настоящие, не в промежутках между задачами.</p>
+          </div>
+        </div>
+
+        <div class="story">
+          <span class="story-tag">История 02</span>
+          <div class="story-title">«Я не хочу здесь оставаться»</div>
+          <div class="story-part">
+            <span class="story-label">До</span>
+            <p>Жила в нелюбимом месте. Держала работа, но коллектив давил, начальство самодурствовало, энергия уходила на то чтобы просто выдержать день. Свой проект лежал в столе.</p>
+          </div>
+          <div class="story-part">
+            <span class="story-label">После</span>
+            <p>Уволилась. Переехала туда, где давно мечтала жить. Синдром самозванца, который годами шептал «ты недостаточно хороша» — вдруг затих. Выяснилось, что он просто отражал чужие голоса. В своём проекте чувствует максимум энергии для реализации задуманного.</p>
+          </div>
+        </div>
+
+        <div class="story">
+          <span class="story-tag">История 03</span>
+          <div class="story-title">«Уйду в отпуск — всё рухнет»</div>
+          <div class="story-part">
+            <span class="story-label">До</span>
+            <p>Собственник бизнеса — и всё держалось на нём. Уйди он на неделю — система посыпется. Так казалось.</p>
+          </div>
+          <div class="story-part">
+            <span class="story-label">В процессе</span>
+            <p>Выстроили систему управления, онбординг, отбор, обучение. Прописали миссию и запустили систему мотивации. Мэджик — сотрудники сами стали делать показатели по продажам. Несколько точек пробили финансовые рекорды. Параллельно — наладил сон, встроил тренировки, перестал тонуть в операционке.</p>
+          </div>
+          <div class="story-part">
+            <span class="story-label">После</span>
+            <p>Уехал в отпуск с семьёй. На целый месяц. И ничего не рухнуло.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ДОВЕРИЕ -->
+  <div class="trust">
+    <div class="wrap">
+      <div class="trust-grid">
+        <div>
+          <span class="eyebrow">Почему со мной</span>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-num">1700+</span>
+              <span class="stat-label">сессий</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">300+</span>
+              <span class="stat-label">часов супервизии</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">400+</span>
+              <span class="stat-label">часов фасилитации</span>
+            </div>
+          </div>
+        </div>
+        <div class="body-text">
+          <p>Но цифры — это не главное. Главное — я сама иду этим путём. Путём Героя, со всеми его взлётами и падениями. Каждый инструмент, который я даю своим студентам или клиентам, — я не просто изучила, а прожила и превратила в свой устойчивый навык.</p>
+          <p>И вот что я знаю точно: инсайт сам по себе ничего не меняет. Понять почему вы так живёте — можно из подкаста. Узнать про части и внутреннюю систему — можно из статьи. Увидеть как это работает — можно из видео.</p>
+          <p>Но чтобы это стало вашей жизнью, тем, чем можно пользоваться каждый день — нужно прожить это в живом контакте с собой. Не прочитать, не послушать, а встретиться с собой настоящим в пространстве, где безопасно быть честным.</p>
+          <p>Именно это происходит в работе со мной. Знакомство с внутренней системой, живой опыт взаимодействия с ней — и интеграция навыков, которые остаются с вами навсегда.</p>
+          <a href="about.html" class="btn btn-dark" style="margin-top: 40px;">Подробнее обо мне</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ФИНАЛЬНЫЙ CTA -->
+  <div class="final-cta">
+    <div class="wrap">
+      <h2>У каждого Героя свой <em>Путь</em></h2>
+      <div class="cta-btns">
+        <a href="learn.html" class="btn btn-dark">Начать самостоятельно</a>
+        <a href="diagnostics.html" class="btn btn-gold">Начать вместе</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Ангелина Вивчаренко</span>
+    <span>© 2025 · Все права защищены</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

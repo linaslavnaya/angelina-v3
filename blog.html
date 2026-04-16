@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог — Ангелина Вивчаренко</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FAFAF8; --text: #1C1C1A; --gold: #B89A6A;
+      --divider: #E2DDD5; --muted: #5C5C5A; --warm: #F2EDE5;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 64px;
+      background: rgba(250,250,248,0.96);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 14px; }
+    .monogram {
+      width: 38px; height: 38px; border: 1px solid var(--divider);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant SC', serif; font-size: 13px; color: var(--text);
+    }
+    .nav-logo-name { font-family: 'Cormorant SC', serif; font-size: 13px; letter-spacing: 0.12em; color: var(--text); }
+    .nav-links { display: flex; gap: 44px; list-style: none; }
+    .nav-links a { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 64px;
+    }
+    .label {
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); display: block; margin-bottom: 32px;
+    }
+    h1 {
+      font-family: 'Cormorant Garant', serif; font-weight: 300;
+      font-style: italic;
+      font-size: clamp(32px, 4.5vw, 60px);
+      line-height: 1.2; color: var(--text);
+      margin-bottom: 24px;
+    }
+    .rule { width: 40px; height: 1px; background: var(--gold); margin: 0 auto 32px; }
+    p {
+      font-size: 15.5px; line-height: 1.9; color: var(--muted);
+      max-width: 480px; margin: 0 auto 48px;
+    }
+    .btn {
+      display: inline-block; font-family: 'Inter', sans-serif;
+      font-size: 10px; font-weight: 400; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 14px 32px; border: 1px solid var(--text);
+      color: var(--text); transition: background 0.3s, color 0.3s;
+    }
+    .btn:hover { background: var(--text); color: var(--bg); }
+
+    footer {
+      border-top: 1px solid var(--divider); padding: 40px 64px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-name { font-family: 'Cormorant SC', serif; font-size: 13px; letter-spacing: 0.1em; }
+    footer span { font-size: 11px; color: #9A9A98; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="monogram">А·В</div>
+      <span class="nav-logo-name">Ангелина Вивчаренко</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">Обо мне</a></li>
+      <li><a href="diagnostics.html">Диагностика</a></li>
+      <li><a href="program.html">Программа</a></li>
+      <li><a href="learn.html">Обучение</a></li>
+      <li><a href="blog.html" class="active">Блог</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <span class="label">Блог</span>
+    <h1>Скоро здесь будут статьи</h1>
+    <div class="rule"></div>
+    <p>Про IFS, внутренние части, нейробиологию изменений и то, как устроен человек изнутри. Пока материалы готовятся — можно начать знакомство иначе.</p>
+    <a href="index.html" class="btn">На главную</a>
+  </div>
+
+  <footer>
+    <span class="footer-name">Ангелина Вивчаренко</span>
+    <span>© 2025 · Все права защищены</span>
+  </footer>
+
+</body>
+</html>
